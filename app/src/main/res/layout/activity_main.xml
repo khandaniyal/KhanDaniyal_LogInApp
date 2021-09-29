@@ -113,5 +113,18 @@
         app:layout_constraintVertical_bias="0.234"
         app:srcCompat="@drawable/ic_check" />
 
+    <ImageView
+        android:id="@+id/imgError"
+        android:layout_width="38dp"
+        android:layout_height="32dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblLoginResult"
+        app:layout_constraintVertical_bias="0.255"
+        app:srcCompat="@drawable/ic_error" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
