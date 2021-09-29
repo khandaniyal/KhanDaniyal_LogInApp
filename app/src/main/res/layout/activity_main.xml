@@ -2,10 +2,11 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/imgCheck"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:background="@color/dark_blue">
+    android:background="@color/start_dark_blue"
+    tools:context=".MainActivity">
 
     <!-- android:background="@drawable/custom_input" -->
 
@@ -14,6 +15,7 @@
         android:id="@+id/txtUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
         android:drawableStart="@drawable/custom_email_icon"
         android:drawablePadding="14dp"
         android:ems="10"
@@ -32,6 +34,7 @@
         android:id="@+id/txtPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
         android:drawableStart="@drawable/custom_lock_icon"
         android:drawablePadding="14dp"
         android:ems="10"
@@ -51,15 +54,15 @@
         android:id="@+id/btnLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/forest_green"
+        android:drawablePadding="12dp"
         android:text="Log in"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtPassword"
-        app:layout_constraintVertical_bias="0.341"
-        android:backgroundTint="@color/forest_green"
-        android:drawablePadding="12dp" />
+        app:layout_constraintVertical_bias="0.341" />
 
     <!-- android:background="@drawable/custom_input" -->
 
@@ -69,10 +72,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Not Logged In"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:textColor="@color/white"
         app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
 
     <ImageView
@@ -96,5 +99,19 @@
         app:layout_constraintTop_toBottomOf="@+id/imgLogo"
         app:layout_constraintVertical_bias="0.194"
         app:srcCompat="@drawable/imgtitle" />
+
+    <ImageView
+        android:id="@+id/imgCheckerino"
+        android:layout_width="38dp"
+        android:layout_height="32dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblLoginResult"
+        app:layout_constraintVertical_bias="0.234"
+        app:srcCompat="@drawable/ic_check" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
