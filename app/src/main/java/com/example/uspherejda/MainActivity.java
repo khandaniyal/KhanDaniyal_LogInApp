@@ -56,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
                     Log.i("Test", "Login successfull");
                 }else{
                     lblLoginResult.setText("Login unsuccessfull. Try again.");
+                    //If the credentials are correct set the visibity of this icon to true. In the xml file i have set the visibility to false.
                     imgError.setVisibility(View.VISIBLE);
                     imgCheck.setVisibility(View.INVISIBLE);
                     Log.i("Test", "Login unsuccessfull");
