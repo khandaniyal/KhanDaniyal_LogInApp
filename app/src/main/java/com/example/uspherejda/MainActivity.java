@@ -2,8 +2,11 @@ package com.example.uspherejda;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,6 +19,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //Top Bar custom image
+        setContentView(R.layout.activity_main);
+        androidx.appcompat.app.ActionBar actionBar = getSupportActionBar();
+
+        actionBar.setDisplayShowCustomEnabled(true);
+        LayoutInflater layoutInflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View view = layoutInflater.inflate(R.layout.custom_bar_image, null);
+        actionBar.setCustomView(view);
 
         //Buttons.
         Button btnLogin = findViewById(R.id.btnLogin);
@@ -53,6 +65,8 @@ public class MainActivity extends AppCompatActivity {
                     //If the credentials are correct set the visibity of this icon to true. In the xml file i have set the visibility to false.
                     imgCheck.setVisibility(View.VISIBLE);
                     imgError.setVisibility(View.INVISIBLE);
+                    //Change to Home Screen
+                    startActivity(new Intent(MainActivity.this, HomeScreen.class));
                     Log.i("Test", "Login successfull");
                 }else{
                     lblLoginResult.setText("Login unsuccessfull. Try again.");
