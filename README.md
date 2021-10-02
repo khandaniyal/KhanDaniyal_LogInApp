@@ -3,8 +3,6 @@
 
 **I am going to briefly explain the few things I added on the app in terms of visual elements.**
 
-**The .apk is located inside app/release/app-release.apk**
-
 - I added two images. One is a logo and the other one is a title as shown here.
 
 ![](https://i.imgur.com/SO1TTMV.png)
