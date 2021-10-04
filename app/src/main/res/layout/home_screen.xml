@@ -6,6 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".HomeScreen">
 
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/nav_menu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ImageButton
         android:id="@+id/btnSatellite"
         android:layout_width="258dp"
@@ -32,5 +41,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnSatellite"
         app:layout_constraintVertical_bias="0.057" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/nav_menu"
+        android:background="@color/start_dark_blue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:itemIconTint="@drawable/bottom_nav_color"
+        app:itemTextTint="@color/white"
+        app:menu="@menu/bottom_navigation"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

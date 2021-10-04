@@ -23,12 +23,10 @@ public class MainActivity extends AppCompatActivity {
         //Top Bar custom image
         setContentView(R.layout.activity_main);
         androidx.appcompat.app.ActionBar actionBar = getSupportActionBar();
-
         actionBar.setDisplayShowCustomEnabled(true);
         LayoutInflater layoutInflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = layoutInflater.inflate(R.layout.custom_bar_image, null);
         actionBar.setCustomView(view);
-
         //Buttons.
         Button btnLogin = findViewById(R.id.btnLogin);
         //Texts.
@@ -40,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
         ImageView imgTitle = (ImageView) findViewById(R.id.imgTitle);
         ImageView imgCheck = (ImageView) findViewById(R.id.imgCheckerino);
         ImageView imgError = (ImageView) findViewById(R.id.imgError);
-
         //Moves the elements in the Y axis downwards.
         btnLogin.setTranslationY(150);
         txtUsername.setTranslationY(150);
@@ -66,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
                     imgCheck.setVisibility(View.VISIBLE);
                     imgError.setVisibility(View.INVISIBLE);
                     //Change to Home Screen
-                    startActivity(new Intent(MainActivity.this, HomeScreen.class));
+                    startActivity(new Intent(getApplicationContext(), HomeScreen.class));
                     Log.i("Test", "Login successfull");
                 }else{
                     lblLoginResult.setText("Login unsuccessfull. Try again.");

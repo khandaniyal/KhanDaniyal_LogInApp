@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UsphereJDA">
         <activity
-            android:name=".MainActivity2"
+            android:name=".HomeScreen"
             android:exported="true" />
         <activity
             android:name=".MainActivity"
