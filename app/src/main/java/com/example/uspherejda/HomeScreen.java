@@ -18,6 +18,9 @@ public class HomeScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_screen);
+
+        //getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
+
         //Set up a custom bar using a custom
         androidx.appcompat.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayShowCustomEnabled(true);
@@ -47,12 +50,12 @@ public class HomeScreen extends AppCompatActivity {
             return true;
         });
 
-        //Click listener when the image is pressed
+        /* Click listener when the image is pressed
         btnSat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //load list of satellites
             }
-        });
+        }); */
     }
 }
