@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageButton;
@@ -18,16 +19,14 @@ public class HomeScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_screen);
-
-        //getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
-
+        //call the Home fragment
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
         //Set up a custom bar using a custom
         androidx.appcompat.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayShowCustomEnabled(true);
         LayoutInflater layoutInflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = layoutInflater.inflate(R.layout.custom_bar_image, null);
         actionBar.setCustomView(view);
-
         //Image Buttons.
         ImageButton btnSat = (ImageButton) findViewById(R.id.btnSatellite);
         //Texts.
@@ -43,14 +42,16 @@ public class HomeScreen extends AppCompatActivity {
                     break;
                 case R.id.nav_list:
                     selectedFragment = new ListFragment();
+                    break;
                 case R.id.nav_add:
                     selectedFragment = new AddFragment();
+                    break;
             }
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
             return true;
         });
 
-        /* Click listener when the image is pressed
+        /*Click listener when the image is pressed
         btnSat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

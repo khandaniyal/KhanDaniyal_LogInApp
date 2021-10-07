@@ -4,8 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.net.wifi.hotspot2.pps.HomeSp;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +18,10 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //splash screen theme
+        SystemClock.sleep(200);
+        setTheme(R.style.SplashTheme);
+        //main theme
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -63,8 +67,8 @@ public class MainActivity extends AppCompatActivity {
                     //If the credentials are correct set the visibity of this icon to true. In the xml file i have set the visibility to false.
                     imgCheck.setVisibility(View.VISIBLE);
                     imgError.setVisibility(View.INVISIBLE);
-                    //Change to Home Screen
                     startActivity(new Intent(getApplicationContext(), HomeScreen.class));
+                    //Change to Home Screen
                     Log.i("Test", "Login successfull");
                 }else{
                     lblLoginResult.setText("Login unsuccessfull. Try again.");
