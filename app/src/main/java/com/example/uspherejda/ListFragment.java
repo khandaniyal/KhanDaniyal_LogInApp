@@ -1,12 +1,22 @@
 package com.example.uspherejda;
 
+import android.os.Build;
 import android.os.Bundle;
 
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.recyclerview.RecyclerViewAdapter;
+import com.example.uspherejda.Model.SatelliteForm;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -55,10 +65,27 @@ public class ListFragment extends Fragment {
         }
     }
 
+    //@RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_list, container, false);
+        View listView = inflater.inflate(R.layout.fragment_list, container, false);
+        SatelliteForm form = new SatelliteForm();
+        ArrayList<String> array_noms = new ArrayList<>(form.getObject());
+        /*
+        array_noms.add("Pepito");
+        array_noms.add("Joselito");
+        array_noms.add("Paquito");
+        array_noms.add("Tonito");
+        array_noms.add("Yo que se");
+        array_noms.add("hahahha");
+        */
+
+        RecyclerView recyclerView = listView.findViewById(R.id.recyclerView);
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(array_noms);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        return listView;
     }
 
 }
