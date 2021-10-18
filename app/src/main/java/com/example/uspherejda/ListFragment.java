@@ -71,13 +71,14 @@ public class ListFragment extends Fragment {
         View listView = inflater.inflate(R.layout.fragment_list, container, false);
         SatelliteForm form = new SatelliteForm();
         ArrayList<String> array_noms = new ArrayList<>(form.getObject());
+
         /*
-        array_noms.add("Pepito");
-        array_noms.add("Joselito");
-        array_noms.add("Paquito");
-        array_noms.add("Tonito");
-        array_noms.add("Yo que se");
-        array_noms.add("hahahha");
+            array_noms.add("Pepito");
+            array_noms.add("Joselito");
+            array_noms.add("Paquito");
+            array_noms.add("Tonito");
+            array_noms.add("Yo que se");
+            array_noms.add("hahahha");
         */
 
         RecyclerView recyclerView = listView.findViewById(R.id.recyclerView);

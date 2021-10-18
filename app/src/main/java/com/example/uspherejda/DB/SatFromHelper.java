@@ -14,9 +14,9 @@ public class SatFromHelper extends SQLiteOpenHelper {
 
     private static final String SQL_CREATE_ENTRIES = "CREATE TABLE " + SatFormContracts.ContactsEntry.TABLE_NAME +
             " (" + SatFormContracts.ContactsEntry.ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-            SatFormContracts.ContactsEntry.COLUMN_NAME_TITLE + " VARCHAR(20)," +
-            SatFormContracts.ContactsEntry.COLUMN_COUNTRY_TITLE + " VARCHAR(20)," +
-            SatFormContracts.ContactsEntry.COLUMN_CATEGROY_TITLE + " VARCHAR(20) )";
+            SatFormContracts.ContactsEntry.COLUMN_NAME_TITLE + " VARCHAR," +
+            SatFormContracts.ContactsEntry.COLUMN_COUNTRY_TITLE + " VARCHAR," +
+            SatFormContracts.ContactsEntry.COLUMN_CATEGROY_TITLE + " VARCHAR )";
 
     public SatFromHelper(Context context){
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
