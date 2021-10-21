@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.view.LayoutInflater;
@@ -11,14 +12,24 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.example.uspherejda.DB.SatFromHelper;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class HomeScreen extends AppCompatActivity {
+    //SQL
+    private SatFromHelper dbHelper;
+    private SQLiteDatabase db;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_screen);
+
+        dbHelper = new SatFromHelper(this);
+        db = dbHelper.getWritableDatabase();
+        //dbHelper.createTable(db);
+
         //call the Home fragment
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
         //Set up a custom bar using a custom
@@ -41,10 +52,10 @@ public class HomeScreen extends AppCompatActivity {
                     selectedFragment = new HomeFragment();
                     break;
                 case R.id.nav_list:
-                    selectedFragment = new ListFragment();
+                    selectedFragment = new ListFragment(dbHelper, db);
                     break;
                 case R.id.nav_add:
-                    selectedFragment = new AddFragment();
+                    selectedFragment = new AddFragment(dbHelper, db);
                     break;
             }
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();

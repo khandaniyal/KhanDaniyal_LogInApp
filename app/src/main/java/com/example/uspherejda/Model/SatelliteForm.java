@@ -15,19 +15,19 @@ public class SatelliteForm {
     public SatelliteForm(){}
     //Construtcor
     public SatelliteForm(String name, String country, String category){
-        setName(name);
-        setCountry(country);
-        setCategory(category);
-        addObject(name, country, category);
+        this.name = name;
+        this.country = country;
+        this.category = category;
+        this.names = names;
+        addNames(name, country, category);
     }
     //Method which adds the variables to an array of objects
-    public void addObject(String name, String country, String category) {
+    public void addNames(String name, String country, String category) {
         list = Arrays.asList(name, country, category);
         names = new ArrayList<>(list);
-
     }
     //Getters & Setters
-    public ArrayList<String> getObject(){
+    public ArrayList<String> getArray(){
         return names;
     }
     public String getName() { return name; }

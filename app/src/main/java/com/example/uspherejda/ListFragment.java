@@ -1,19 +1,19 @@
 package com.example.uspherejda;
 
-import android.os.Build;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
-import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.recyclerview.RecyclerViewAdapter;
+import com.example.uspherejda.DB.SatFromHelper;
 import com.example.uspherejda.Model.SatelliteForm;
 
 import java.util.ArrayList;
@@ -30,12 +30,22 @@ public class ListFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
+    //SQL
+    private SatFromHelper dbHelper;
+    private SQLiteDatabase db;
+
+
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
     public ListFragment() {
         // Required empty public constructor
+    }
+
+    public ListFragment(SatFromHelper dbHelper, SQLiteDatabase db){
+        this.dbHelper = dbHelper;
+        this.db = db;
     }
 
     /**
@@ -69,22 +79,14 @@ public class ListFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         View listView = inflater.inflate(R.layout.fragment_list, container, false);
-        SatelliteForm form = new SatelliteForm();
-        ArrayList<String> array_noms = new ArrayList<>(form.getObject());
 
-        /*
-            array_noms.add("Pepito");
-            array_noms.add("Joselito");
-            array_noms.add("Paquito");
-            array_noms.add("Tonito");
-            array_noms.add("Yo que se");
-            array_noms.add("hahahha");
-        */
+        ArrayList<SatelliteForm> arraySatelite = dbHelper.getAllData(db);
 
         RecyclerView recyclerView = listView.findViewById(R.id.recyclerView);
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(array_noms);
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(arraySatelite);
         recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setLayoutManager(new LinearLayoutManager((getContext())));
+        recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
 
         return listView;
     }

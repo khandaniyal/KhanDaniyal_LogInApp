@@ -5,14 +5,16 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.uspherejda.Model.SatelliteForm;
 import com.example.uspherejda.R;
 import java.util.ArrayList;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
-    private final ArrayList<String> array_noms;
+    private final ArrayList<SatelliteForm> arraySatelite;
 
-    public RecyclerViewAdapter(ArrayList<String> arrN){
-        array_noms = arrN;
+    public RecyclerViewAdapter(ArrayList<SatelliteForm> arrN){
+        arraySatelite = arrN;
     }
 
     @NonNull
@@ -25,11 +27,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.etiquetaNom.setText(array_noms.get(position));
+        holder.etiquetaNom.setText(arraySatelite.get(position).getName());
     }
 
     @Override
-    public int getItemCount() { return array_noms.size(); }
+    public int getItemCount() { return arraySatelite.size(); }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         TextView etiquetaNom;

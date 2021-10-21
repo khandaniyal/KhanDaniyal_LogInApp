@@ -41,6 +41,12 @@ public class AddFragment extends Fragment {
     public AddFragment() {
         // Required empty public constructor
     }
+
+    public AddFragment(SatFromHelper dbHelper, SQLiteDatabase db){
+        this.dbHelper = dbHelper;
+        this.db = db;
+    }
+
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
@@ -76,23 +82,17 @@ public class AddFragment extends Fragment {
         EditText categoryName = addView.findViewById(R.id.txtCategory);
         Button save = addView.findViewById(R.id.btnSubmit);
         TextView saveState = addView.findViewById(R.id.txtSaveState);
-
-        //Creation of the dbHelper
-        dbHelper = new SatFromHelper(getContext());
-        db = dbHelper.getWritableDatabase();
-
+        dbHelper.createTable(db);
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(!(satName.getText().toString().isEmpty() || countryName.getText().toString().isEmpty() || categoryName.getText().toString().isEmpty())){
+                    //adds the current names into the constructor
                     SatelliteForm addForm = new SatelliteForm(satName.getText().toString(),
-                                                              countryName.getText().toString(),
-                                                              categoryName.getText().toString());
-
-                    SatelliteForm satelliteForm = new SatelliteForm(satName.getText().toString(),
-                                                                    countryName.getText().toString(),
-                                                                    categoryName.getText().toString());
-                    dbHelper.insertContact(db, satelliteForm);
+                                                              categoryName.getText().toString(),
+                                                              countryName.getText().toString());
+                    //adds and creates the db
+                    dbHelper.insertContact(db, addForm);
                     saveState.setText("Saved!");
                 }else{
                     saveState.setText("One or all the fields are empty");
