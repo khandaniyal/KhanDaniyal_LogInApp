@@ -36,9 +36,9 @@ public class SatFromHelper extends SQLiteOpenHelper {
 
     }
 
-    public void createTable(SQLiteDatabase sqLiteDatabase){
+    /*public void createTable(SQLiteDatabase sqLiteDatabase){
         sqLiteDatabase.execSQL(SQL_CREATE_ENTRIES);
-    }
+    }*/
     public void insertContact(SQLiteDatabase db, SatelliteForm sf){
 
         //Check the bd is open
@@ -57,20 +57,19 @@ public class SatFromHelper extends SQLiteOpenHelper {
         }
     }
 
-
     public ArrayList<SatelliteForm> getAllData(SQLiteDatabase sqLiteDatabase){
         ArrayList<SatelliteForm> arraySatelite = new ArrayList<>();
         sqLiteDatabase = this.getWritableDatabase();
-        String SELECT_QUERY = "select name, country, category from form;";
+        String SELECT_QUERY = "select name, country, category from " + SatFormContracts.ContactsEntry.TABLE_NAME + ";";
         Cursor c = sqLiteDatabase.rawQuery(SELECT_QUERY, null);
         if(c.moveToFirst()){
             while(c.moveToNext()){
                 SatelliteForm form = new SatelliteForm();
-                form.setName(c.getString(1));
-                form.setCountry(c.getString(2));
-                form.setCategory(c.getString(3));
+                form.setName(c.getString(0));
+                form.setCountry(c.getString(1));
+                form.setCategory(c.getString(2));
                 arraySatelite.add(form);
-                Log.i("nameSQL", c.getString(1) + "" + c.getString(2) + "" + c.getString(3));
+                Log.i("nameSQL", c.getString(0) + "" + c.getString(1) + "" + c.getString(2));
             }
         }
         c.close();

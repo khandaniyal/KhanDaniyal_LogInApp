@@ -21,7 +21,7 @@ public class SatelliteForm {
         this.names = names;
         addNames(name, country, category);
     }
-    //Method which adds the variables to an array of objects
+    //Method which adds the variables to an array
     public void addNames(String name, String country, String category) {
         list = Arrays.asList(name, country, category);
         names = new ArrayList<>(list);

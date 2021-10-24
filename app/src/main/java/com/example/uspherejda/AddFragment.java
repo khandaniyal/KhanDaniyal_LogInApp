@@ -82,7 +82,7 @@ public class AddFragment extends Fragment {
         EditText categoryName = addView.findViewById(R.id.txtCategory);
         Button save = addView.findViewById(R.id.btnSubmit);
         TextView saveState = addView.findViewById(R.id.txtSaveState);
-        dbHelper.createTable(db);
+        //dbHelper.createTable(db);
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -91,7 +91,7 @@ public class AddFragment extends Fragment {
                     SatelliteForm addForm = new SatelliteForm(satName.getText().toString(),
                                                               categoryName.getText().toString(),
                                                               countryName.getText().toString());
-                    //adds and creates the db
+                    //inserts the values
                     dbHelper.insertContact(db, addForm);
                     saveState.setText("Saved!");
                 }else{
