@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.example.recyclerview.RecyclerViewAdapter;
 import com.example.uspherejda.DB.SatFromHelper;
@@ -27,8 +28,8 @@ public class ListFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private static final java.lang.String ARG_PARAM1 = "param1";
+    private static final java.lang.String ARG_PARAM2 = "param2";
 
     //SQL
     private SatFromHelper dbHelper;
@@ -36,8 +37,8 @@ public class ListFragment extends Fragment {
 
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private java.lang.String mParam1;
+    private java.lang.String mParam2;
 
     public ListFragment() {
         // Required empty public constructor
@@ -57,11 +58,11 @@ public class ListFragment extends Fragment {
      * @return A new instance of fragment ListFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static ListFragment newInstance(String param1, String param2) {
+    public static ListFragment newInstance(SatelliteForm param1, SatelliteForm param2) {
         ListFragment fragment = new ListFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putString(ARG_PARAM1, String.valueOf(param1));
+        args.putString(ARG_PARAM2, String.valueOf(param2));
         fragment.setArguments(args);
         return fragment;
     }
@@ -79,16 +80,23 @@ public class ListFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         View listView = inflater.inflate(R.layout.fragment_list, container, false);
+        RecyclerView recyclerView = listView.findViewById(R.id.recyclerView);
+        Button deleteEntries = listView.findViewById(R.id.btnDeleteEntries);
 
         ArrayList<SatelliteForm> arraySatelite = dbHelper.getAllData(db);
-
-        RecyclerView recyclerView = listView.findViewById(R.id.recyclerView);
         RecyclerViewAdapter adapter = new RecyclerViewAdapter(arraySatelite);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager((getContext())));
         recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
 
+        deleteEntries.setOnClickListener(e -> deleteEntries(arraySatelite));
         return listView;
+    }
+
+    public void deleteEntries(ArrayList<?> arraySatelite){
+        if(db != null & arraySatelite != null ){
+            dbHelper.onDelete(db);
+        }
     }
 
 }

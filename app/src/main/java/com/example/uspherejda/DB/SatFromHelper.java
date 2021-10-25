@@ -15,7 +15,7 @@ public class SatFromHelper extends SQLiteOpenHelper {
     public static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME = "contacts.db";
 
-    private static final String SQL_DROP_TABLE = "DROP TABLE IF EXISTS " + SatFormContracts.ContactsEntry.TABLE_NAME;
+    //private static final String SQL_DROP_ENTRIES = "DELETE * TABLE " + SatFormContracts.ContactsEntry.TABLE_NAME + ";";
     private static final String SQL_CREATE_ENTRIES = "CREATE TABLE " + SatFormContracts.ContactsEntry.TABLE_NAME +
             " (" + SatFormContracts.ContactsEntry.ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
             SatFormContracts.ContactsEntry.COLUMN_NAME_TITLE + " VARCHAR(10)," +
@@ -35,12 +35,10 @@ public class SatFromHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
 
     }
-
-    /*public void createTable(SQLiteDatabase sqLiteDatabase){
-        sqLiteDatabase.execSQL(SQL_CREATE_ENTRIES);
-    }*/
+    public void onDelete(SQLiteDatabase db){
+        db.execSQL("delete from " + SatFormContracts.ContactsEntry.TABLE_NAME);
+    }
     public void insertContact(SQLiteDatabase db, SatelliteForm sf){
-
         //Check the bd is open
         if (db.isOpen()){
             //Creation of the register for insert object with the content values
@@ -57,6 +55,7 @@ public class SatFromHelper extends SQLiteOpenHelper {
         }
     }
 
+
     public ArrayList<SatelliteForm> getAllData(SQLiteDatabase sqLiteDatabase){
         ArrayList<SatelliteForm> arraySatelite = new ArrayList<>();
         sqLiteDatabase = this.getWritableDatabase();
@@ -68,8 +67,8 @@ public class SatFromHelper extends SQLiteOpenHelper {
                 form.setName(c.getString(0));
                 form.setCountry(c.getString(1));
                 form.setCategory(c.getString(2));
+                //Log.i("nameSQL", c.getString(1) + "" + c.getString(2) + "" + c.getString(3));
                 arraySatelite.add(form);
-                Log.i("nameSQL", c.getString(0) + "" + c.getString(1) + "" + c.getString(2));
             }
         }
         c.close();

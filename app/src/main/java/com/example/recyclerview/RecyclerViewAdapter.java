@@ -11,10 +11,10 @@ import com.example.uspherejda.R;
 import java.util.ArrayList;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
-    private final ArrayList<SatelliteForm> arraySatelite;
+    private final ArrayList<SatelliteForm> nameArr;
 
     public RecyclerViewAdapter(ArrayList<SatelliteForm> arrN){
-        arraySatelite = arrN;
+        nameArr = arrN;
     }
 
     @NonNull
@@ -27,18 +27,17 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.etiquetaNom.setText(arraySatelite.get(position).getName());
+        holder.nameLabel.setText(nameArr.get(position).getName());
     }
 
     @Override
-    public int getItemCount() { return arraySatelite.size(); }
+    public int getItemCount() { return nameArr.size(); }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        TextView etiquetaNom;
-
+        TextView nameLabel;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            etiquetaNom = itemView.findViewById(R.id.userName);
+            nameLabel = itemView.findViewById(R.id.userName);
         }
     }
 }
