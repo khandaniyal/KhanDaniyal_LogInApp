@@ -89,13 +89,14 @@ public class ListFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager((getContext())));
         recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
 
-        deleteEntries.setOnClickListener(e -> deleteEntries(arraySatelite));
+        deleteEntries.setOnClickListener(e -> deleteEntries(arraySatelite, db));
         return listView;
     }
 
-    public void deleteEntries(ArrayList<?> arraySatelite){
-        if(db != null & arraySatelite != null ){
+    public void deleteEntries(ArrayList<?> arraySatelite, SQLiteDatabase db){
+        if(arraySatelite != null && db != null){
             dbHelper.onDelete(db);
+            arraySatelite = new ArrayList<>();
         }
     }
 

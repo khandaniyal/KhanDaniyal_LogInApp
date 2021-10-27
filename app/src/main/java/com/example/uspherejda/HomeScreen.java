@@ -70,4 +70,11 @@ public class HomeScreen extends AppCompatActivity {
             }
         }); */
     }
+    //Close the db when the activity onDestroy
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        dbHelper.close();
+        db.close();
+    }
 }

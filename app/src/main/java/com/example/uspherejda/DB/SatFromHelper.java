@@ -67,7 +67,7 @@ public class SatFromHelper extends SQLiteOpenHelper {
                 form.setName(c.getString(0));
                 form.setCountry(c.getString(1));
                 form.setCategory(c.getString(2));
-                //Log.i("nameSQL", c.getString(1) + "" + c.getString(2) + "" + c.getString(3));
+                Log.i("nameSQL", c.getString(0) + "" + c.getString(1) + "" + c.getString(2));
                 arraySatelite.add(form);
             }
         }

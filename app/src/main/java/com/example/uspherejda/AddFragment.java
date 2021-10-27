@@ -99,11 +99,5 @@ public class AddFragment extends Fragment {
         });
         return addView;
     }
-    //Close the db when the activity onDestroy
-    @Override
-    public void onDestroy() {
-        dbHelper.close();
-        db.close();
-        super.onDestroy();
-    }
+
 }

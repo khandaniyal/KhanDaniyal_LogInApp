@@ -35,9 +35,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         TextView nameLabel;
+        TextView countryLabel;
+        TextView categoryLabel;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            nameLabel = itemView.findViewById(R.id.userName);
+            nameLabel = itemView.findViewById(R.id.lblName);
+            countryLabel = itemView.findViewById(R.id.lblCountry);
+            categoryLabel = itemView.findViewById(R.id.lblCategory);
         }
     }
 }
