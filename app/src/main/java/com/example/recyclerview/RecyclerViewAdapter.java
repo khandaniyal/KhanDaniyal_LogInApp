@@ -4,6 +4,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.uspherejda.Model.SatelliteForm;
@@ -28,6 +29,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.nameLabel.setText(nameArr.get(position).getName());
+        holder.countryLabel.setText(nameArr.get(position).getCountry());
+        holder.categoryLabel.setText(nameArr.get(position).getCategory());
     }
 
     @Override

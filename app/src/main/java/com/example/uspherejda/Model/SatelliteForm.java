@@ -10,30 +10,39 @@ public class SatelliteForm {
     private java.lang.String category;
     private ArrayList<java.lang.String> names;
     private List<java.lang.String> list;
+    private int id;
 
     //Empty constructor
     public SatelliteForm(){}
     //Construtcor
-    public SatelliteForm(java.lang.String name, java.lang.String country, java.lang.String category){
+    public SatelliteForm(String name, String country, String category){
         this.name = name;
         this.country = country;
         this.category = category;
         this.names = names;
-        addNames(name, country, category);
     }
-    //Method which adds the variables to an array
-    public void addNames(java.lang.String name, java.lang.String country, java.lang.String category) {
-        list = Arrays.asList(name, country, category);
-        names = new ArrayList<>(list);
+
+    //Construtcor
+    public SatelliteForm(int id, String name, String country, String category){
+        this.id = id;
+        this.name = name;
+        this.country = country;
+        this.category = category;
+        this.names = names;
+
     }
+
     //Getters & Setters
-    public ArrayList<java.lang.String> getArray(){
+    public ArrayList<String> getArray(){
         return names;
     }
-    public java.lang.String getName() { return name; }
-    public java.lang.String getCountry() { return country; }
-    public java.lang.String getCategory() { return category; }
-    public void setName(java.lang.String name) { this.name = name; }
-    public void setCountry(java.lang.String country) { this.country = country; }
-    public void setCategory(java.lang.String category) { this.category = category; }
+    public String getName() { return name; }
+    public String getCountry() { return country; }
+    public String getCategory() { return category; }
+    public void setName(String name) { this.name = name; }
+    public void setCountry(String country) { this.country = country; }
+    public void setCategory(String category) { this.category = category; }
+    public int getId() { return id; }
+
+    public void setId(int id) { this.id = id; }
 }

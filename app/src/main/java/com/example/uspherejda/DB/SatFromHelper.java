@@ -54,22 +54,25 @@ public class SatFromHelper extends SQLiteOpenHelper {
             Log.i("sql","Database is closed");
         }
     }
-
-
-    public ArrayList<SatelliteForm> getAllData(SQLiteDatabase sqLiteDatabase){
+    public void removeSatelite(SQLiteDatabase sqLiteDatabase, int pos){
+        sqLiteDatabase.execSQL("delete from form where id=" + pos);
+    }
+    public ArrayList<SatelliteForm> getAllData(SQLiteDatabase sqLiteDatabase) {
         ArrayList<SatelliteForm> arraySatelite = new ArrayList<>();
         sqLiteDatabase = this.getWritableDatabase();
-        String SELECT_QUERY = "select name, country, category from " + SatFormContracts.ContactsEntry.TABLE_NAME + ";";
+        String SELECT_QUERY = "select id, name, country, category from " + SatFormContracts.ContactsEntry.TABLE_NAME + ";";
         Cursor c = sqLiteDatabase.rawQuery(SELECT_QUERY, null);
-        if(c.moveToFirst()){
-            while(c.moveToNext()){
+        Log.i("nameSQL", "" + c.getCount());
+        if(c.moveToFirst()) {
+            do{
                 SatelliteForm form = new SatelliteForm();
-                form.setName(c.getString(0));
-                form.setCountry(c.getString(1));
-                form.setCategory(c.getString(2));
-                Log.i("nameSQL", c.getString(0) + "" + c.getString(1) + "" + c.getString(2));
+                form.setId(c.getInt(0));
+                form.setName(c.getString(1));
+                form.setCountry(c.getString(2));
+                form.setCategory(c.getString(3));
+                Log.i("nameSQL", c.getInt(0) + "" + c.getString(1) + "" + c.getString(2) + "" + c.getString(3));
                 arraySatelite.add(form);
-            }
+            }while (c.moveToNext());
         }
         c.close();
         return arraySatelite;

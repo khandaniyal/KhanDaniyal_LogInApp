@@ -3,11 +3,14 @@ package com.example.uspherejda;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,7 +47,7 @@ public class ListFragment extends Fragment {
         // Required empty public constructor
     }
 
-    public ListFragment(SatFromHelper dbHelper, SQLiteDatabase db){
+    public ListFragment(SatFromHelper dbHelper, SQLiteDatabase db) {
         this.dbHelper = dbHelper;
         this.db = db;
     }
@@ -78,26 +81,55 @@ public class ListFragment extends Fragment {
 
     //@RequiresApi(api = Build.VERSION_CODES.N)
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View listView = inflater.inflate(R.layout.fragment_list, container, false);
         RecyclerView recyclerView = listView.findViewById(R.id.recyclerView);
         Button deleteEntries = listView.findViewById(R.id.btnDeleteEntries);
-
         ArrayList<SatelliteForm> arraySatelite = dbHelper.getAllData(db);
         RecyclerViewAdapter adapter = new RecyclerViewAdapter(arraySatelite);
+        //Auxixliar ItemTouchHelper
+        ItemTouchHelper.SimpleCallback itemTouchHelperCallBack1 = null;
+        //Swipe on delete, it can be either right or left
+        ItemTouchHelper.Callback itemTouchHelperCallback = itemTouchHelper(itemTouchHelperCallBack1, arraySatelite, dbHelper,
+                                                            db, adapter);
+        new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(recyclerView);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager((getContext())));
         recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
-
+        //need to add toast for confirmation
         deleteEntries.setOnClickListener(e -> deleteEntries(arraySatelite, db));
         return listView;
     }
 
-    public void deleteEntries(ArrayList<?> arraySatelite, SQLiteDatabase db){
-        if(arraySatelite != null && db != null){
+    public void deleteEntries(ArrayList<?> arraySatelite, SQLiteDatabase db) {
+        if (arraySatelite != null && db != null) {
             dbHelper.onDelete(db);
             arraySatelite = new ArrayList<>();
         }
+        //After deleting the current entries refresh the current activity calling the same fragment
+        getParentFragmentManager().beginTransaction().replace(R.id.fragment_container, new ListFragment(dbHelper, db)).commit();
     }
 
+    public ItemTouchHelper.SimpleCallback itemTouchHelper(ItemTouchHelper.SimpleCallback itemTouchHelperCallBack,
+                                                          ArrayList<SatelliteForm> arraySatelite, SatFromHelper dbHelper,
+                                                          SQLiteDatabase db,
+                                                          RecyclerViewAdapter adapter){
+        itemTouchHelperCallBack =
+                new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT | ItemTouchHelper.LEFT) {
+                    @Override
+                    public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                        return false;
+                    }
+                    @Override
+                    public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                        int deletedObject = viewHolder.getAdapterPosition();
+                        Log.i("removeob", "" + deletedObject);
+                        Log.i("removeob", "" + arraySatelite.get(deletedObject).getId());
+                        dbHelper.removeSatelite(db, arraySatelite.get(deletedObject).getId());
+                        arraySatelite.remove(deletedObject);
+                        adapter.notifyDataSetChanged();
+                    }
+                };
+        return itemTouchHelperCallBack;
+    }
 }

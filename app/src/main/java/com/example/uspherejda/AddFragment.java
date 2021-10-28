@@ -86,9 +86,11 @@ public class AddFragment extends Fragment {
                 if(!(satName.getText().toString().isEmpty() || countryName.getText().toString().isEmpty() || categoryName.getText().toString().isEmpty())){
                     //adds the current names into the constructor
                     SatelliteForm addForm = new SatelliteForm(satName.getText().toString(),
-                                                              categoryName.getText().toString(),
-                                                              countryName.getText().toString());
-                    //inserts the values
+                                                              countryName.getText().toString(),
+                                                              categoryName.getText().toString());
+                    //Refresh current activity
+                    getParentFragmentManager().beginTransaction().replace(R.id.fragment_container, new AddFragment(dbHelper, db)).commit();
+                    //inserts the values into the db
                     dbHelper.insertContact(db, addForm);
                     saveState.setText("Saved!");
                 }else{
@@ -99,5 +101,4 @@ public class AddFragment extends Fragment {
         });
         return addView;
     }
-
 }
