@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/CardView"
+    android:layout_marginTop="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:animateLayoutChanges="true"
+    app:cardCornerRadius="10dp"
+    app:cardUseCompatPadding="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:animateLayoutChanges="true"
+        android:orientation="vertical"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:background="@color/center_light_blue"
+            android:outlineSpotShadowColor="@color/black"
+            android:padding="6dp"/>
+            <ImageView
+                android:id="@+id/imgSat"
+                android:layout_width="100dp"
+                android:layout_height="70dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="left"
+                android:paddingLeft="14dp"
+                android:paddingRight="14dp"
+                app:srcCompat="@drawable/satellite"
+                android:layout_alignParentLeft="true" />
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="4dp"
+                android:layout_marginBottom="2dp"
+                android:layout_toEndOf="@+id/imgSat"
+                android:orientation="vertical"
+                android:layout_marginLeft="4dp"
+                android:layout_toRightOf="@+id/imgSat"/>
+
+    <TextView
+        android:id="@+id/lblSatList"
+        android:layout_width="101dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp"
+        android:layout_marginLeft="110dp"
+        android:layout_marginTop="5dp"
+        android:hint="Sat Name"
+        android:textColor="@color/white"
+        android:textStyle="bold" />
+    <TextView
+        android:id="@+id/lblSatcountry"
+        android:layout_width="101dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp"
+        android:layout_marginLeft="110dp"
+        android:layout_marginTop="25dp"
+        android:hint="Sat Country"
+        android:textColor="@color/white"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/lblSatCategory"
+        android:layout_width="101dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp"
+        android:layout_marginLeft="110dp"
+        android:layout_marginTop="45dp"
+        android:hint="Sat Category"
+        android:textColor="@color/white"
+        android:textStyle="bold" />
+
+
+</androidx.cardview.widget.CardView>

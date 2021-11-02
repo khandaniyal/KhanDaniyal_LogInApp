@@ -4,7 +4,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.uspherejda.Model.SatelliteForm;
@@ -21,7 +20,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_view, parent, false);
         ViewHolder holder = new ViewHolder(view);
         return holder;
     }
@@ -42,9 +41,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         TextView categoryLabel;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            nameLabel = itemView.findViewById(R.id.lblName);
+          /*  nameLabel = itemView.findViewById(R.id.lblName);
             countryLabel = itemView.findViewById(R.id.lblCountry);
-            categoryLabel = itemView.findViewById(R.id.lblCategory);
+            categoryLabel = itemView.findViewById(R.id.lblCategory);*/
+            nameLabel = itemView.findViewById(R.id.lblSatList);
+            countryLabel = itemView.findViewById(R.id.lblSatcountry);
+            categoryLabel = itemView.findViewById(R.id.lblSatCategory);
         }
     }
 }

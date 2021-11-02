@@ -28,7 +28,6 @@ public class HomeScreen extends AppCompatActivity {
 
         dbHelper = new SatFromHelper(this);
         db = dbHelper.getWritableDatabase();
-        //dbHelper.createTable(db);
 
         //call the Home fragment
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();

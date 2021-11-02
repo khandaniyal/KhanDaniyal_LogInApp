@@ -95,7 +95,7 @@ public class ListFragment extends Fragment {
         new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(recyclerView);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager((getContext())));
-        recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
+        //recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
         //need to add toast for confirmation
         deleteEntries.setOnClickListener(e -> deleteEntries(arraySatelite, db));
         return listView;
