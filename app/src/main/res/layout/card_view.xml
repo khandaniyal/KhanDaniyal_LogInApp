@@ -45,7 +45,7 @@
                 android:layout_toRightOf="@+id/imgSat"/>
 
     <TextView
-        android:id="@+id/lblSatList"
+        android:id="@+id/lblSatName"
         android:layout_width="101dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="2dp"
@@ -62,8 +62,7 @@
         android:layout_marginLeft="110dp"
         android:layout_marginTop="25dp"
         android:hint="Sat Country"
-        android:textColor="@color/white"
-        android:textStyle="bold" />
+        android:textColor="@color/white" />
 
     <TextView
         android:id="@+id/lblSatCategory"
@@ -73,8 +72,7 @@
         android:layout_marginLeft="110dp"
         android:layout_marginTop="45dp"
         android:hint="Sat Category"
-        android:textColor="@color/white"
-        android:textStyle="bold" />
+        android:textColor="@color/white" />
 
 
 </androidx.cardview.widget.CardView>

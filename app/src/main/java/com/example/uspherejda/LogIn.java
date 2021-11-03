@@ -1,24 +1,24 @@
 package com.example.uspherejda;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.recyclerview.RecyclerViewAdapter;
-
-public class MainActivity extends AppCompatActivity {
+public class LogIn extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,9 +30,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //Top Bar custom image
-        setContentView(R.layout.activity_main);
-        androidx.appcompat.app.ActionBar actionBar = getSupportActionBar();
+        ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayShowCustomEnabled(true);
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.start_dark_blue)));
         LayoutInflater layoutInflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = layoutInflater.inflate(R.layout.custom_bar_image, null);
         actionBar.setCustomView(view);
@@ -47,6 +47,11 @@ public class MainActivity extends AppCompatActivity {
         ImageView imgTitle = (ImageView) findViewById(R.id.imgTitle);
         ImageView imgCheck = (ImageView) findViewById(R.id.imgCheckerino);
         ImageView imgError = (ImageView) findViewById(R.id.imgError);
+        //Animation for our logo
+        Animation logoAnim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.rotate_anim);
+        logoAnim.setStartOffset(1600);
+        logoAnim.setRepeatCount(0);
+        imgLogo.startAnimation(logoAnim);
         //Moves the elements in the Y axis downwards.
         btnLogin.setTranslationY(150);
         txtUsername.setTranslationY(150);
@@ -72,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
                     imgCheck.setVisibility(View.VISIBLE);
                     imgError.setVisibility(View.INVISIBLE);
                     startActivity(new Intent(getApplicationContext(), HomeScreen.class));
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                     //Change to Home Screen
                     Log.i("Test", "Login successfull");
                 }else{

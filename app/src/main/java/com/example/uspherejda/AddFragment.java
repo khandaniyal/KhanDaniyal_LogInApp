@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.uspherejda.DB.SatFromHelper;
 import com.example.uspherejda.Model.SatelliteForm;
@@ -92,6 +93,7 @@ public class AddFragment extends Fragment {
                     getParentFragmentManager().beginTransaction().replace(R.id.fragment_container, new AddFragment(dbHelper, db)).commit();
                     //inserts the values into the db
                     dbHelper.insertContact(db, addForm);
+                    Toast.makeText(getContext(), "Satellite added successfully!", Toast.LENGTH_SHORT).show();
                     saveState.setText("Saved!");
                 }else{
                     saveState.setText("One or all the fields are empty");

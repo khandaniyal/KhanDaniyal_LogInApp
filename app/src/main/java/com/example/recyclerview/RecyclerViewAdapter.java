@@ -44,7 +44,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
           /*  nameLabel = itemView.findViewById(R.id.lblName);
             countryLabel = itemView.findViewById(R.id.lblCountry);
             categoryLabel = itemView.findViewById(R.id.lblCategory);*/
-            nameLabel = itemView.findViewById(R.id.lblSatList);
+            nameLabel = itemView.findViewById(R.id.lblSatName);
             countryLabel = itemView.findViewById(R.id.lblSatcountry);
             categoryLabel = itemView.findViewById(R.id.lblSatCategory);
         }

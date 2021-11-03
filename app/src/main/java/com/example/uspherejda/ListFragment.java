@@ -1,24 +1,27 @@
 package com.example.uspherejda;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
+import java.util.ArrayList;
 
 import com.example.recyclerview.RecyclerViewAdapter;
 import com.example.uspherejda.DB.SatFromHelper;
 import com.example.uspherejda.Model.SatelliteForm;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 
@@ -83,11 +86,13 @@ public class ListFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View listView = inflater.inflate(R.layout.fragment_list, container, false);
+        dbHelper = new SatFromHelper(getContext());
+        db = dbHelper.getWritableDatabase();
         RecyclerView recyclerView = listView.findViewById(R.id.recyclerView);
         Button deleteEntries = listView.findViewById(R.id.btnDeleteEntries);
         ArrayList<SatelliteForm> arraySatelite = dbHelper.getAllData(db);
         RecyclerViewAdapter adapter = new RecyclerViewAdapter(arraySatelite);
-        //Auxixliar ItemTouchHelper
+        //Auxiliar ItemTouchHelper
         ItemTouchHelper.SimpleCallback itemTouchHelperCallBack1 = null;
         //Swipe on delete, it can be either right or left
         ItemTouchHelper.Callback itemTouchHelperCallback = itemTouchHelper(itemTouchHelperCallBack1, arraySatelite, dbHelper,
@@ -97,19 +102,19 @@ public class ListFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager((getContext())));
         //recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
         //need to add toast for confirmation
-        deleteEntries.setOnClickListener(e -> deleteEntries(arraySatelite, db));
+        deleteEntries.setOnClickListener(e -> showAlert("Delete", "Are you sure you want to delete all the current entries?", arraySatelite, db));
         return listView;
     }
-
+    //this method deletes all the current entries
     public void deleteEntries(ArrayList<?> arraySatelite, SQLiteDatabase db) {
-        if (arraySatelite != null && db != null) {
+        if (arraySatelite != null && db != null) { //first checks if the list and the are not empty
             dbHelper.onDelete(db);
             arraySatelite = new ArrayList<>();
         }
         //After deleting the current entries refresh the current activity calling the same fragment
         getParentFragmentManager().beginTransaction().replace(R.id.fragment_container, new ListFragment(dbHelper, db)).commit();
     }
-
+    //this method will remove a specific satellite when swiped
     public ItemTouchHelper.SimpleCallback itemTouchHelper(ItemTouchHelper.SimpleCallback itemTouchHelperCallBack,
                                                           ArrayList<SatelliteForm> arraySatelite, SatFromHelper dbHelper,
                                                           SQLiteDatabase db,
@@ -126,10 +131,28 @@ public class ListFragment extends Fragment {
                         Log.i("removeob", "" + deletedObject);
                         Log.i("removeob", "" + arraySatelite.get(deletedObject).getId());
                         dbHelper.removeSatelite(db, arraySatelite.get(deletedObject).getId());
-                        arraySatelite.remove(deletedObject);
+                        arraySatelite.remove(deletedObject);//remove swiped item
                         adapter.notifyDataSetChanged();
                     }
                 };
         return itemTouchHelperCallBack;
+    }
+    //this method will alert with a dialog when the delte button is pressed
+    public void showAlert(String title, String message, ArrayList<?> arraySatelite, SQLiteDatabase db){
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setTitle(title);
+        builder.setMessage(message)
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                //KO METHOD
+            }
+        }).setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        deleteEntries(arraySatelite, db);
+                    }
+                });
+        AlertDialog dialog = builder.create();
+        dialog.show();
+
     }
 }

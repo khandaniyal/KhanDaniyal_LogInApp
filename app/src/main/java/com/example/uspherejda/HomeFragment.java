@@ -1,19 +1,30 @@
 package com.example.uspherejda;
 
+import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
+import android.widget.Toast;
+
+import com.example.uspherejda.DB.SatFromHelper;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link HomeFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements View.OnClickListener {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -24,8 +35,19 @@ public class HomeFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    //Cards
+    private CardView satList, addSat, satType, satCountries, aboutMe, goCrazy;
+    //SQL
+    private SatFromHelper dbHelper;
+    private SQLiteDatabase db = null;
+
     public HomeFragment() {
         // Required empty public constructor
+    }
+    public HomeFragment(SatFromHelper dbHelper, SQLiteDatabase db){
+        this.dbHelper = dbHelper;
+        this.db = db;
+
     }
 
     /**
@@ -58,7 +80,42 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
+        dbHelper = new SatFromHelper(getContext());
+        db = dbHelper.getWritableDatabase();
+        //Card views.
+        satList = (CardView) view.findViewById(R.id.crdList);
+        addSat = (CardView) view.findViewById(R.id.crdForm);
+        satType = (CardView) view.findViewById(R.id.crdSatTypes);
+        satCountries = (CardView) view.findViewById(R.id.crdCountries);
+        aboutMe = (CardView) view.findViewById(R.id.crdAboutMe);
+        goCrazy = (CardView) view.findViewById(R.id.crdGoCrayCraaaaay);
+        //cardView Listeners
+        satList.setOnClickListener(this::onClick);
+        addSat.setOnClickListener(this::onClick);
+        satType.setOnClickListener(this::onClick);
+        satCountries.setOnClickListener(this::onClick);
+        aboutMe.setOnClickListener(this::onClick);
+        goCrazy.setOnClickListener(this::onClick);
+        return view;
+    }
+    @Override
+    public void onClick(View v){
+        ImageView imgLogo = v.findViewById(R.id.imgLogo);
+        switch (v.getId()){
+            case R.id.crdList: getParentFragmentManager().beginTransaction().replace(R.id.fragment_container, new ListFragment(dbHelper, db)).commit();
+                break;
+            case R.id.crdForm: getParentFragmentManager().beginTransaction().replace(R.id.fragment_container, new AddFragment(dbHelper, db)).commit();
+                break;
+            case R.id.crdSatTypes: Toast.makeText(getContext(), "Coming soon...", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.crdCountries: Toast.makeText(getContext(), "Coming soon...", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.crdAboutMe: Toast.makeText(getContext(), "HELP ME", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.crdGoCrayCraaaaay: Toast.makeText(getContext(), "I AM CRAZY", Toast.LENGTH_SHORT).show();
+            break;
+        }
     }
 
 }

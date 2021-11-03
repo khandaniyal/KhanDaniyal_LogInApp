@@ -5,13 +5,40 @@
     android:id="@+id/frameLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/start_dark_blue"
     tools:context=".AddFragment" >
+
+
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="6dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/lblAddList"
+            android:layout_width="301dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="2dp"
+            android:text="Add a satellite"
+            android:textColor="@color/white"
+            android:textSize="40dp"
+            android:textStyle="bold" />
+    </RelativeLayout>
 
     <EditText
         android:id="@+id/txtSatName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="148dp"
+        android:backgroundTint="@color/white"
         android:ems="10"
         android:hint="Satellite Name"
         android:inputType="textPersonName"
@@ -25,6 +52,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
+        android:backgroundTint="@color/white"
         android:ems="10"
         android:hint="Satellite Category"
         android:inputType="textPersonName"
@@ -39,6 +67,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
         android:ems="10"
+        android:backgroundTint="@color/white"
         android:hint="Satellite Country Name"
         android:inputType="textPersonName"
         android:minHeight="48dp"
@@ -48,9 +77,11 @@
 
     <Button
         android:id="@+id/btnSubmit"
-        android:layout_width="wrap_content"
+        android:layout_width="190dp"
         android:layout_height="wrap_content"
-        android:text="Save"
+        android:backgroundTint="@color/forest_green"
+        android:text="ADD"
+        android:textColor="@color/end_darkest_blue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -62,12 +93,9 @@
         android:id="@+id/txtSaveState"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="168dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="167dp"
-        android:layout_marginBottom="211dp"
+        android:layout_marginTop="16dp"
         android:text="Not saved"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnSubmit" />

@@ -6,10 +6,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
-
 import com.example.uspherejda.Model.SatelliteForm;
-
 import java.util.ArrayList;
+
 
 public class SatFromHelper extends SQLiteOpenHelper {
     public static final int DATABASE_VERSION = 1;
@@ -54,13 +53,16 @@ public class SatFromHelper extends SQLiteOpenHelper {
             Log.i("sql","Database is closed");
         }
     }
+    //this method removes a specific item from the  db
     public void removeSatelite(SQLiteDatabase sqLiteDatabase, int pos){
         sqLiteDatabase.execSQL("delete from form where id=" + pos);
     }
+    //reads from and stores the selected items from the db
     public ArrayList<SatelliteForm> getAllData(SQLiteDatabase sqLiteDatabase) {
         ArrayList<SatelliteForm> arraySatelite = new ArrayList<>();
         sqLiteDatabase = this.getWritableDatabase();
         String SELECT_QUERY = "select id, name, country, category from " + SatFormContracts.ContactsEntry.TABLE_NAME + ";";
+        //this cursor will navigate through the db
         Cursor c = sqLiteDatabase.rawQuery(SELECT_QUERY, null);
         Log.i("nameSQL", "" + c.getCount());
         if(c.moveToFirst()) {
