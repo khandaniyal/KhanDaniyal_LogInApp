@@ -81,24 +81,21 @@ public class AddFragment extends Fragment {
         Button save = addView.findViewById(R.id.btnSubmit);
         TextView saveState = addView.findViewById(R.id.txtSaveState);
         //dbHelper.createTable(db);
-        save.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(!(satName.getText().toString().isEmpty() || countryName.getText().toString().isEmpty() || categoryName.getText().toString().isEmpty())){
-                    //adds the current names into the constructor
-                    SatelliteForm addForm = new SatelliteForm(satName.getText().toString(),
-                                                              countryName.getText().toString(),
-                                                              categoryName.getText().toString());
-                    //Refresh current activity
-                    getParentFragmentManager().beginTransaction().replace(R.id.fragment_container, new AddFragment(dbHelper, db)).commit();
-                    //inserts the values into the db
-                    dbHelper.insertContact(db, addForm);
-                    Toast.makeText(getContext(), "Satellite added successfully!", Toast.LENGTH_SHORT).show();
-                    saveState.setText("Saved!");
-                }else{
-                    saveState.setText("One or all the fields are empty");
-                    Log.i("Campos", "Unos de los campos esta vacio");
-                }
+        save.setOnClickListener(e -> {
+            if(!(satName.getText().toString().isEmpty() || countryName.getText().toString().isEmpty() || categoryName.getText().toString().isEmpty())){
+                //adds the current names into the constructor
+                SatelliteForm addForm = new SatelliteForm(satName.getText().toString(),
+                        countryName.getText().toString(),
+                        categoryName.getText().toString());
+                //Refresh current activity
+                getParentFragmentManager().beginTransaction().replace(R.id.fragment_container, new AddFragment(dbHelper, db)).commit();
+                //inserts the values into the db
+                dbHelper.insertContact(db, addForm);
+                Toast.makeText(getContext(), "Satellite added successfully!", Toast.LENGTH_SHORT).show();
+                saveState.setText("Saved!");
+            }else{
+                saveState.setText("One or all the fields are empty");
+                Log.i("Campos", "Unos de los campos esta vacio");
             }
         });
         return addView;

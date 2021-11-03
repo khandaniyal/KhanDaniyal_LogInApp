@@ -49,7 +49,7 @@ public class LogIn extends AppCompatActivity {
         ImageView imgError = (ImageView) findViewById(R.id.imgError);
         //Animation for our logo
         Animation logoAnim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.rotate_anim);
-        logoAnim.setStartOffset(1600);
+        logoAnim.setStartOffset(1900);
         logoAnim.setRepeatCount(0);
         imgLogo.startAnimation(logoAnim);
         //Moves the elements in the Y axis downwards.
@@ -66,7 +66,6 @@ public class LogIn extends AppCompatActivity {
         imgLogo.animate().alpha(1f).translationYBy(-150).setDuration(1500);
         imgTitle.animate().alpha(1f).translationYBy(-150).setDuration(1500);
         lblLoginResult.animate().alpha(1f).translationYBy(-150).setDuration(1500);
-
         //An event is done when the Log In button is pressed.
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override

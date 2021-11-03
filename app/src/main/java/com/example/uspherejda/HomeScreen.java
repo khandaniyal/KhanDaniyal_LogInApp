@@ -41,7 +41,6 @@ public class HomeScreen extends AppCompatActivity {
         View view = layoutInflater.inflate(R.layout.custom_bar_image, null);
         actionBar.setCustomView(view);
 
-
         //Bottom Navigation
         BottomNavigationView bottomNav = findViewById(R.id.nav_menu);
         //Item listener when one of hte items below from the nav_bar is selected
