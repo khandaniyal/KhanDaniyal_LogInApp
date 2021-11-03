@@ -68,7 +68,7 @@ public class HomeScreen extends AppCompatActivity {
         dbHelper.close();
         db.close();
     }
-
+    //when exit activity do the following animation
     @Override
     public void finish() {
         super.finish();

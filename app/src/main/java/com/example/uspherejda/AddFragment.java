@@ -75,10 +75,13 @@ public class AddFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View addView = inflater.inflate(R.layout.fragment_add, container, false);
+        //Texts
         EditText satName = addView.findViewById(R.id.txtSatName);
         EditText countryName = addView.findViewById(R.id.txtCountry);
         EditText categoryName = addView.findViewById(R.id.txtCategory);
+        //Save Button
         Button save = addView.findViewById(R.id.btnSubmit);
+        //TextView
         TextView saveState = addView.findViewById(R.id.txtSaveState);
         //dbHelper.createTable(db);
         save.setOnClickListener(e -> {

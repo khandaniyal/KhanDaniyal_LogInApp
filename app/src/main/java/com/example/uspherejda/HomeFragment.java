@@ -99,6 +99,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         goCrazy.setOnClickListener(this::onClick);
         return view;
     }
+    //Click listeners
     @Override
     public void onClick(View v){
         ImageView imgLogo = v.findViewById(R.id.imgLogo);

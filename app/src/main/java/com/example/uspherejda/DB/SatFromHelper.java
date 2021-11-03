@@ -25,6 +25,7 @@ public class SatFromHelper extends SQLiteOpenHelper {
     public SatFromHelper(Context context){
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
+    //create fb
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL(SQL_CREATE_ENTRIES);
@@ -34,9 +35,11 @@ public class SatFromHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
 
     }
+    //delete all elements into the table
     public void onDelete(SQLiteDatabase db){
         db.execSQL("delete from " + SatFormContracts.ContactsEntry.TABLE_NAME);
     }
+    //insert the elements into the rows
     public void insertContact(SQLiteDatabase db, SatelliteForm sf){
         //Check the bd is open
         if (db.isOpen()){
@@ -44,6 +47,7 @@ public class SatFromHelper extends SQLiteOpenHelper {
             ContentValues values = new ContentValues();
             //Insert the incidence getting all values
             Log.i("sqlitelog", sf.getName() + " " + sf.getCategory() + " " + sf.getCountry());
+            //put the values into the db
             values.put(SatFormContracts.ContactsEntry.COLUMN_NAME_TITLE, sf.getName());
             values.put(SatFormContracts.ContactsEntry.COLUMN_COUNTRY_TITLE, sf.getCountry());
             values.put(SatFormContracts.ContactsEntry.COLUMN_CATEGORY_TITLE, sf.getCategory());

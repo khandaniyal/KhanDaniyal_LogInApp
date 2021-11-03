@@ -86,10 +86,14 @@ public class ListFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View listView = inflater.inflate(R.layout.fragment_list, container, false);
+        //initialize variables
         dbHelper = new SatFromHelper(getContext());
         db = dbHelper.getWritableDatabase();
+        //recyclerview
         RecyclerView recyclerView = listView.findViewById(R.id.recyclerView);
+        //button
         Button deleteEntries = listView.findViewById(R.id.btnDeleteEntries);
+        //List of object where i store the element from the db
         ArrayList<SatelliteForm> arraySatelite = dbHelper.getAllData(db);
         RecyclerViewAdapter adapter = new RecyclerViewAdapter(arraySatelite);
         //Auxiliar ItemTouchHelper
