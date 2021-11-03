@@ -1,22 +1,80 @@
-**Documentation**
----
+# UsPhereJDA Documentation
+**I am going to briefly explain the few things I added on the app in terms of visual elements and more.**
 
-**I am going to briefly explain the few things I added on the app in terms of visual elements.**
+## Tasks
+In my project you'll be able to:
+* Login.
+* Add elements to a local database and display them.
+* Navigate through fragments.
+* Navigate through the dashboard.
 
-- I added two images. One is a logo and the other one is a title as shown here.
+## Screenshots
+#### Splash Screen + Log In Screen
+![](https://i.imgur.com/gPW3ypQ.gif)
 
-![](https://i.imgur.com/SO1TTMV.png)
+#### Bottom navigation
+![](https://i.imgur.com/SNL4Fv9.gif)
 
-- For the Log in verification I inserted a Vector Asset which is invisible until the credentials are correct. This is the Vector Asset in action.
+#### RecyclerView
+![](https://i.imgur.com/fZYkoPj.gif)
 
-![](https://i.imgur.com/BXFio3i.gif)
+#### Form
+![](https://i.imgur.com/yOnUFrj.gif)
 
-- In the other case it shows an error.
+#### On Swipe delete and delete all the current entries
+![](https://i.imgur.com/LPfdNzG.gif)
 
-![](https://i.imgur.com/weQFPWr.png)
+#### Dashboard CardViews
+![](https://i.imgur.com/svtbIwO.gif)
 
-- And the last silly thing I added is a slight animation that takes all the elements of the Log In screen and slides them upwards when you launch the app. This is documented on the .java file.
 
-![](https://i.imgur.com/NUvaz8p.gif)
 
-- For this first mini app project it turned out to be a quite classy and minimalist Log In scrren. All of the extra little things are documented on the MainActivity.java.
+## Technologies used
+This project is developed with android studio (java).
+I've used this extra clases:
+
+* Fragment Manager -> HomeFragment, ListFragment, AddFragment
+* Model -> UserForm
+* SQLite DB -> SatFormContracts, SatFormHelper
+* recyclerview -> RecyclerViewAdapter
+* HomeScreen and Login
+
+Something like this:
+
+![](https://i.imgur.com/6ag0pUL.png)
+
+
+
+
+## App access
+* Username: admin
+* Password: admin
+
+## Extra information
+- #### Colors
+    -   Dark Blue id the main color used for this app. 
+- #### Animations
+    - Actually I implemented quite a lot animations.
+     ![](https://i.imgur.com/36ZOMAr.png)
+
+- #### Extra tasks
+- #### OnSwipe delete specific item from the RecyclerView
+- #### Usage of CardViews in the dashboard as well as in the RecyclerView
+
+## Finished / unfinished Tasks
+- [x] Splash screen
+- [x] Bottom navigation
+- [x] Local Storage Sqlite
+- [X] Toast
+- [x] RecyclerView
+- [x] Log In 
+- [x] Delete all the entries or specific entries
+- [x] Dialog
+- [x] App Logo 
+- [x] Theme colors
+- [x] Form Screen
+- [x] List items screen (RecyclerView) 
+
+## Difficulties
+#### Delete a specific item from the RecyclerView using the ItemTouchHelper Swipe method.
+
