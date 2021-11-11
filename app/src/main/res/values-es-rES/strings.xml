@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="password">contraseña</string>
+    <string name="username">nombre de usuario</string>
+    <string name="login">INICIAR SESIÓN</string>
+    <string name="rememberme">Recúerdame</string>
+    <string name="loginstatus">Sesión no iniciada</string>
+    <string name="loginstatus1">Sesión iniciada correctamente</string>
+    <string name="log_error">Sesión incorrecta. Porfavor intentálo otra vez.</string>
+    <string name="dashboard">Mi Dashboard</string>
+    <string name="satellite_list">Lista de Satelites</string>
+    <string name="add_sat">Añadir satélite</string>
+    <string name="sat_type">Tipos de satélites</string>
+    <string name="sat_country">Países con satélites</string>
+    <string name="about_me">Sobre mí</string>
+    <string name="go_crazy">¡Locura!</string>
+
+
+</resources>

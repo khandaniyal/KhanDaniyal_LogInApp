@@ -22,7 +22,7 @@
         android:drawableStart="@drawable/custom_lock_icon"
         android:drawablePadding="14dp"
         android:ems="10"
-        android:hint="password"
+        android:hint="@string/password"
         android:inputType="textPassword"
         android:minHeight="48dp"
         android:text="admin"
@@ -42,7 +42,7 @@
         android:drawableStart="@drawable/custom_email_icon"
         android:drawablePadding="14dp"
         android:ems="10"
-        android:hint="Username or email"
+        android:hint="@string/username"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:text="admin"
@@ -58,28 +58,25 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
         android:backgroundTint="@color/forest_green"
-        android:textColor="@color/end_darkest_blue"
         android:drawablePadding="12dp"
-        android:text="Log in"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="@string/login"
+        android:textColor="@color/end_darkest_blue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtPassword"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/txtPassword" />
 
     <TextView
         android:id="@+id/lblLoginResult"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="Not Logged In"
+        android:layout_marginTop="28dp"
+        android:text="@string/loginstatus"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnLogin"
-        app:layout_constraintVertical_bias="0.234" />
+        app:layout_constraintTop_toBottomOf="@+id/boxRememberMe" />
 
     <ImageView
         android:id="@+id/imgLogo"
@@ -103,32 +100,42 @@
         app:srcCompat="@drawable/imgtitle" />
 
     <ImageView
-        android:id="@+id/imgCheckerino"
-        android:layout_width="38dp"
-        android:layout_height="32dp"
-        android:layout_marginBottom="32dp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblLoginResult"
-        app:layout_constraintVertical_bias="0.234"
-        app:srcCompat="@drawable/ic_check" />
-
-    <ImageView
         android:id="@+id/imgError"
         android:layout_width="38dp"
         android:layout_height="32dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="52dp"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lblLoginResult"
-        app:layout_constraintVertical_bias="0.235"
         app:srcCompat="@drawable/ic_error" />
+
+    <ImageView
+        android:id="@+id/imgCheckerino"
+        android:layout_width="38dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="52dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblLoginResult"
+        app:srcCompat="@drawable/ic_check" />
+
+    <CheckBox
+        android:id="@+id/boxRememberMe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/rememberme"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

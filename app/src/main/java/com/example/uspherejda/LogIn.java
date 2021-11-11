@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.SystemClock;
@@ -14,6 +15,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -28,7 +30,6 @@ public class LogIn extends AppCompatActivity {
         //main theme
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         //Top Bar custom image
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayShowCustomEnabled(true);
@@ -47,6 +48,8 @@ public class LogIn extends AppCompatActivity {
         ImageView imgTitle = (ImageView) findViewById(R.id.imgTitle);
         ImageView imgCheck = (ImageView) findViewById(R.id.imgCheckerino);
         ImageView imgError = (ImageView) findViewById(R.id.imgError);
+        //remember me check
+        CheckBox rememberMe = (CheckBox) findViewById(R.id.boxRememberMe);
         //Animation for our logo
         Animation logoAnim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.rotate_anim);
         logoAnim.setStartOffset(1900);
@@ -66,21 +69,35 @@ public class LogIn extends AppCompatActivity {
         imgLogo.animate().alpha(1f).translationYBy(-150).setDuration(1500);
         imgTitle.animate().alpha(1f).translationYBy(-150).setDuration(1500);
         lblLoginResult.animate().alpha(1f).translationYBy(-150).setDuration(1500);
+        //shared preferences
+        SharedPreferences prefs = getSharedPreferences("loginPrefs", Context.MODE_PRIVATE);
+        SharedPreferences.Editor loginEditor = prefs.edit();
+        boolean saveLogin = prefs.getBoolean("saveLogin", false);
+        if(saveLogin){
+            rememberMe.setChecked(true);
+            startActivity(new Intent(this, HomeScreen.class));
+        }
         //An event is done when the Log In button is pressed.
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(txtUsername.getText().toString().equals("admin") && txtPassword.getText().toString().equals("admin")){
-                    lblLoginResult.setText("Logged In Successfully");
+                    lblLoginResult.setText(getString(R.string.loginstatus1));
                     //If the credentials are correct set the visibity of this icon to true. In the xml file i have set the visibility to false.
                     imgCheck.setVisibility(View.VISIBLE);
                     imgError.setVisibility(View.INVISIBLE);
+                    if(rememberMe.isChecked()){
+                        loginEditor.putBoolean("saveLogin", true);
+                        loginEditor.putString("username", txtUsername.getText().toString());
+                        loginEditor.putString("password", txtPassword.getText().toString());
+                        loginEditor.commit();
+                    }else{ loginEditor.clear().commit(); }
                     startActivity(new Intent(getApplicationContext(), HomeScreen.class));
                     overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                     //Change to Home Screen
                     Log.i("Test", "Login successfull");
                 }else{
-                    lblLoginResult.setText("Login unsuccessfull. Try again.");
+                    lblLoginResult.setText(getString(R.string.log_error));
                     //If the credentials are correct set the visibity of this icon to true. In the xml file i have set the visibility to false.
                     imgError.setVisibility(View.VISIBLE);
                     imgCheck.setVisibility(View.INVISIBLE);
@@ -89,5 +106,4 @@ public class LogIn extends AppCompatActivity {
             }
         });
     }
-
 }

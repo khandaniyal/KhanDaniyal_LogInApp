@@ -1,7 +1,21 @@
 <resources>
-    <string name="app_name">UsphereJDA</string>
+
+    <string name="app_name" translatable="false">UsphereJDA</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="password">password</string>
+    <string name="username">username</string>
+    <string name="login">LOG IN</string>
+    <string name="rememberme">Remember me</string>
+    <string name="loginstatus">Not Logged In</string>
+    <string name="loginstatus1">Logged In succesfully</string>
+    <string name="log_error">Login unsuccessfull. Try again.</string>
+    <string name="dashboard">My Dashboard</string>
     <string name="satellite_list">Satellite List</string>
+    <string name="add_sat">Add a satellite</string>
+    <string name="sat_type">Types of Satellites</string>
+    <string name="sat_country">Satellite Countries</string>
+    <string name="about_me">About Me</string>
+    <string name="go_crazy">Go Crazy!</string>
+
 
 </resources>
