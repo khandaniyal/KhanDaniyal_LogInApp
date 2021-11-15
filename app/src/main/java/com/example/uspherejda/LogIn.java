@@ -21,7 +21,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class LogIn extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //splash screen theme
@@ -78,9 +77,7 @@ public class LogIn extends AppCompatActivity {
             startActivity(new Intent(this, HomeScreen.class));
         }
         //An event is done when the Log In button is pressed.
-        btnLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        btnLogin.setOnClickListener(e -> {
                 if(txtUsername.getText().toString().equals("admin") && txtPassword.getText().toString().equals("admin")){
                     lblLoginResult.setText(getString(R.string.loginstatus1));
                     //If the credentials are correct set the visibity of this icon to true. In the xml file i have set the visibility to false.
@@ -103,7 +100,6 @@ public class LogIn extends AppCompatActivity {
                     imgCheck.setVisibility(View.INVISIBLE);
                     Log.i("Test", "Login unsuccessfull");
                 }
-            }
         });
     }
 }

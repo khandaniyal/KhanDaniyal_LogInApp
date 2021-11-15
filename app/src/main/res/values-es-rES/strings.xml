@@ -14,6 +14,8 @@
     <string name="sat_country">Países con satélites</string>
     <string name="about_me">Sobre mí</string>
     <string name="go_crazy">¡Locura!</string>
+    <string name="delete_list">ELIMINAR ENTRADAS ACTUALES</string>
+
 
 
 </resources>

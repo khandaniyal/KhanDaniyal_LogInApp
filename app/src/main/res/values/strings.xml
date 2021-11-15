@@ -16,6 +16,10 @@
     <string name="sat_country">Satellite Countries</string>
     <string name="about_me">About Me</string>
     <string name="go_crazy">Go Crazy!</string>
+    <string name="delete_list">DELETE CURRENT ENTRIES</string>
+    <string name="toast_confirm"></string>
+
+
 
 
 </resources>
