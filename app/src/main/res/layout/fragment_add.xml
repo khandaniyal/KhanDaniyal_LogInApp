@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/start_dark_blue"
-    tools:context=".AddFragment" >
+    tools:context=".Fragments.AddFragment" >
 
 
 
@@ -40,7 +40,7 @@
         android:layout_marginTop="148dp"
         android:backgroundTint="@color/white"
         android:ems="10"
-        android:hint="Satellite Name"
+        android:hint="@string/sat_name"
         android:textColor="@color/white"
         android:inputType="textPersonName"
         android:minHeight="48dp"
@@ -56,7 +56,7 @@
         android:backgroundTint="@color/white"
         android:textColor="@color/white"
         android:ems="10"
-        android:hint="Satellite Category"
+        android:hint="@string/sat_catehory"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -71,7 +71,7 @@
         android:ems="10"
         android:backgroundTint="@color/white"
         android:textColor="@color/white"
-        android:hint="Satellite Country Name"
+        android:hint="@string/sat_countryName"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -83,7 +83,7 @@
         android:layout_width="190dp"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/forest_green"
-        android:text="ADD"
+        android:text="@string/btn_add"
         android:textColor="@color/end_darkest_blue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -97,7 +97,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Not saved"
+        android:text="@string/lbl_status_notSaved"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

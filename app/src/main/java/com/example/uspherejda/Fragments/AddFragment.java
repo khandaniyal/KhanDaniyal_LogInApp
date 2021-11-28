@@ -1,4 +1,4 @@
-package com.example.uspherejda;
+package com.example.uspherejda.Fragments;
 
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.example.uspherejda.DB.SatFromHelper;
 import com.example.uspherejda.Model.SatelliteForm;
+import com.example.uspherejda.R;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -94,10 +95,10 @@ public class AddFragment extends Fragment {
                 getParentFragmentManager().beginTransaction().replace(R.id.fragment_container, new AddFragment(dbHelper, db)).commit();
                 //inserts the values into the db
                 dbHelper.insertContact(db, addForm);
-                Toast.makeText(getContext(), "Satellite added successfully!", Toast.LENGTH_SHORT).show();
-                saveState.setText("Saved!");
+                Toast.makeText(getContext(), getString(R.string.toast_addedSat), Toast.LENGTH_SHORT).show();
+                saveState.setText(getString(R.string.lbl_status_saved));
             }else{
-                saveState.setText("One or all the fields are empty");
+                saveState.setText(getString(R.string.empty_fields));
                 Log.i("Campos", "Unos de los campos esta vacio");
             }
         });

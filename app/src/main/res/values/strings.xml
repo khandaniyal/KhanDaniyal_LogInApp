@@ -2,6 +2,9 @@
 
     <string name="app_name" translatable="false">UsphereJDA</string>
     <!-- TODO: Remove or change this placeholder text -->
+    <string name="confirm_yes">Yes</string>
+    <string name="confirm_no">No</string>
+    <string name="delete">Delete</string>
     <string name="password">password</string>
     <string name="username">username</string>
     <string name="login">LOG IN</string>
@@ -14,12 +17,28 @@
     <string name="add_sat">Add a satellite</string>
     <string name="sat_type">Types of Satellites</string>
     <string name="sat_country">Satellite Countries</string>
-    <string name="about_me">About Me</string>
+    <string name="about_me">Help Me</string>
     <string name="go_crazy">Go Crazy!</string>
     <string name="delete_list">DELETE CURRENT ENTRIES</string>
-    <string name="toast_confirm"></string>
-
-
-
-
+    <string name="toast_confirm">Are you sure you want to delete all the current entries?</string>
+    <string name="toast_comingSonn">Coming soon...</string>
+    <string name="save_status">Saved</string>
+    <string name="toast_addedSat">Satellite added successfully!</string>
+    <string name="empty_fields">One or all the fields are empty</string>
+    <string name="sat_name">Satellite Name</string>
+    <string name="sat_catehory">Satellite Category</string>
+    <string name="sat_countryName">Satellite Country Name</string>
+    <string name="btn_add">ADD</string>
+    <string name="lbl_status_notSaved">Not saved</string>
+    <string name="lbl_status_saved">Saved</string>
+    <string name="settings">Settings</string>
+    <string name="clear_shared_prefs">Clear all the shared preferences</string>
+    <string name="delete_db">Delete database</string>
+    <string name="prefs_cleared">Preferences cleared</string>
+    <string name="db_deleted">Database deleted</string>
+    <string name="satInfoName">Satellite name:</string>
+    <string name="satCountryName">Satellite country name:</string>
+    <string name="satCategoryName">Satellite category:</string>
+    <string name="finger_title">Login with fingerprint</string>
+    <string name="finger_cancel">Password and user</string>
 </resources>

@@ -1,10 +1,11 @@
 package com.example.uspherejda.Model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class SatelliteForm {
+public class SatelliteForm implements Serializable {
     private java.lang.String name;
     private java.lang.String country;
     private java.lang.String category;

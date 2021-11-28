@@ -13,4 +13,8 @@
         android:title="Add"
         android:icon="@drawable/ic_add"
         />
+    <item
+        android:id="@+id/nav_settings"
+        android:title="Settings"
+        android:icon="@drawable/ic_settings"/>
 </menu>

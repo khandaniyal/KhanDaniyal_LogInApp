@@ -1,4 +1,4 @@
-package com.example.uspherejda;
+package com.example.uspherejda.Fragments;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -6,7 +6,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,15 +16,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
+
 import java.util.ArrayList;
 
 import com.example.recyclerview.RecyclerViewAdapter;
 import com.example.uspherejda.DB.SatFromHelper;
+import com.example.uspherejda.Interfaces.FragmentCommunication;
 import com.example.uspherejda.Model.SatelliteForm;
-import com.google.android.material.snackbar.Snackbar;
-
-import java.util.ArrayList;
+import com.example.uspherejda.R;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -40,7 +40,6 @@ public class ListFragment extends Fragment {
     //SQL
     private SatFromHelper dbHelper;
     private SQLiteDatabase db;
-
 
     // TODO: Rename and change types of parameters
     private java.lang.String mParam1;
@@ -106,7 +105,8 @@ public class ListFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager((getContext())));
         //recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
         //need to add toast for confirmation
-        deleteEntries.setOnClickListener(e -> showAlert("Delete", "Are you sure you want to delete all the current entries?", arraySatelite, db));
+        String deleteAlert = "";
+        deleteEntries.setOnClickListener(e -> showAlert(getString(R.string.delete), getString(R.string.toast_confirm), arraySatelite, db));
         return listView;
     }
     //this method deletes all the current entries
@@ -146,11 +146,11 @@ public class ListFragment extends Fragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setTitle(title);
         builder.setMessage(message)
-                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                .setNegativeButton(getString(R.string.confirm_no), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 //KO METHOD
             }
-        }).setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+        }).setPositiveButton(getString(R.string.confirm_yes), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         deleteEntries(arraySatelite, db);
                     }
@@ -159,4 +159,5 @@ public class ListFragment extends Fragment {
         dialog.show();
 
     }
+
 }

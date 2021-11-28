@@ -2,28 +2,26 @@ package com.example.uspherejda;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import android.content.Context;
-import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.os.SystemClock;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageButton;
-import android.widget.TextView;
 
 import com.example.uspherejda.DB.SatFromHelper;
+import com.example.uspherejda.Fragments.AddFragment;
+import com.example.uspherejda.Fragments.HomeFragment;
+import com.example.uspherejda.Fragments.ListFragment;
+import com.example.uspherejda.Fragments.SettingsFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class HomeScreen extends AppCompatActivity {
     //SQL
     private SatFromHelper dbHelper;
     private SQLiteDatabase db;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +53,9 @@ public class HomeScreen extends AppCompatActivity {
                     break;
                 case R.id.nav_add:
                     selectedFragment = new AddFragment(dbHelper, db);
+                    break;
+                case R.id.nav_settings:
+                    selectedFragment = new SettingsFragment();
                     break;
             }
             getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left, R.anim.slide_out_right,  R.anim.slide_in_left ).replace(R.id.fragment_container, selectedFragment).commit();

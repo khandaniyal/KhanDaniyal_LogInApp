@@ -1,10 +1,14 @@
 package com.example.uspherejda;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.ColorDrawable;
+import androidx.biometric.BiometricPrompt;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.util.Log;
@@ -18,7 +22,15 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.concurrent.Executor;
+
 public class LogIn extends AppCompatActivity {
+    public static EditText txtUsername;
+    public static EditText txtPassword;
+    public static SharedPreferences prefs;
+    private Executor executor;
+    private BiometricPrompt bioPrompt;
+    private BiometricPrompt.PromptInfo info;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //splash screen theme
@@ -37,8 +49,8 @@ public class LogIn extends AppCompatActivity {
         //Buttons.
         Button btnLogin = findViewById(R.id.btnLogin);
         //Texts.
-        EditText txtUsername = findViewById(R.id.txtUsername);
-        EditText txtPassword = findViewById(R.id.txtPassword);
+        txtUsername = findViewById(R.id.txtUsername);
+        txtPassword = findViewById(R.id.txtPassword);
         TextView lblLoginResult = findViewById(R.id.lblLoginResult);
         //Images.
         ImageView imgLogo = (ImageView) findViewById(R.id.imgLogo);
@@ -59,6 +71,7 @@ public class LogIn extends AppCompatActivity {
         imgLogo.setTranslationY(150);
         imgTitle.setTranslationY(150);
         lblLoginResult.setTranslationY(150);
+        rememberMe.setTranslationY(150);
         //Moves the elements in the Y axis upwards, it creates a slight animation.
         btnLogin.animate().alpha(1f).translationYBy(-150).setDuration(1500);
         txtUsername.animate().alpha(1f).translationYBy(-150).setDuration(1500);
@@ -66,14 +79,37 @@ public class LogIn extends AppCompatActivity {
         imgLogo.animate().alpha(1f).translationYBy(-150).setDuration(1500);
         imgTitle.animate().alpha(1f).translationYBy(-150).setDuration(1500);
         lblLoginResult.animate().alpha(1f).translationYBy(-150).setDuration(1500);
+        rememberMe.animate().alpha(1f).translationYBy(-150).setDuration(1500);
         //shared preferences
-        SharedPreferences prefs = getSharedPreferences("loginPrefs", Context.MODE_PRIVATE);
+        prefs = getSharedPreferences("loginPrefs", Context.MODE_PRIVATE);
         SharedPreferences.Editor loginEditor = prefs.edit();
         boolean saveLogin = prefs.getBoolean("saveLogin", false);
         if(saveLogin){
             rememberMe.setChecked(true);
             startActivity(new Intent(this, HomeScreen.class));
         }
+        Executor executor = ContextCompat.getMainExecutor(this);
+        BiometricPrompt biometricPrompt = new BiometricPrompt(LogIn.this, executor, new BiometricPrompt.AuthenticationCallback() {
+            @Override
+            public void onAuthenticationError(int errorCode, @NonNull CharSequence errString) {
+                super.onAuthenticationError(errorCode, errString);
+            }
+            @Override
+            public void onAuthenticationSucceeded(@NonNull BiometricPrompt.AuthenticationResult result) {
+                super.onAuthenticationSucceeded(result);
+                if(saveLogin){
+                    rememberMe.setChecked(true);
+                    startActivity(new Intent(getApplicationContext(), HomeScreen.class));
+                }
+            }
+            @Override
+            public void onAuthenticationFailed() { super.onAuthenticationFailed(); }
+        });
+        info = new BiometricPrompt.PromptInfo.Builder()
+                .setTitle(getString(R.string.finger_title))
+                .setNegativeButtonText(getString(R.string.finger_cancel))
+                .build();
+        biometricPrompt.authenticate(info);
         //An event is done when the Log In button is pressed.
         btnLogin.setOnClickListener(e -> {
                 if(txtUsername.getText().toString().equals("admin") && txtPassword.getText().toString().equals("admin")){
@@ -99,5 +135,6 @@ public class LogIn extends AppCompatActivity {
                     Log.i("Test", "Login unsuccessfull");
                 }
         });
+
     }
 }

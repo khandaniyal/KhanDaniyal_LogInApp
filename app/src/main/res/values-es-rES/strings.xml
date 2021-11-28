@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="confirm_yes">Si</string>
+    <string name="confirm_no">No</string>
+    <string name="delete">Eliminar</string>
     <string name="password">contraseña</string>
     <string name="username">nombre de usuario</string>
     <string name="login">INICIAR SESIÓN</string>
@@ -12,9 +15,30 @@
     <string name="add_sat">Añadir satélite</string>
     <string name="sat_type">Tipos de satélites</string>
     <string name="sat_country">Países con satélites</string>
-    <string name="about_me">Sobre mí</string>
+    <string name="about_me">AIUDA</string>
     <string name="go_crazy">¡Locura!</string>
     <string name="delete_list">ELIMINAR ENTRADAS ACTUALES</string>
+    <string name="toast_confirm">¿Estás seguro que quieres eliminar todas las entradas actuales?</string>
+    <string name="toast_comingSonn">Pronto...</string>
+    <string name="toast_addedSat">¡Satélite añadido exitosamente!</string>
+    <string name="save_status">Guardado</string>
+    <string name="empty_fields">Uno de los campos está vacío</string>
+    <string name="sat_name">Nombre Satélite</string>
+    <string name="sat_catehory">Categoría del Satélite</string>
+    <string name="sat_countryName">Nombre país del Satélite</string>
+    <string name="btn_add">AÑADIR</string>
+    <string name="lbl_status_notSaved">No está guardado</string>
+    <string name="lbl_status_saved">Guardado</string>
+    <string name="settings">Configuración</string>
+    <string name="clear_shared_prefs">Vacía las "shared preferences"</string>
+    <string name="delete_db">Eliminar la base de datos</string>
+    <string name="prefs_cleared">Preferencias vacías</string>
+    <string name="db_deleted">Bas de datos eliminada</string>
+    <string name="satInfoName">Nombre del Satélite:</string>
+    <string name="satCountryName">País:</string>
+    <string name="satCategoryName">Categoría:</string>
+    <string name="finger_title">Inicia sesión con la huella</string>
+    <string name="finger_cancel">Contraseña y usuario</string>
 
 
 
