@@ -88,8 +88,8 @@ public class LogIn extends AppCompatActivity {
             rememberMe.setChecked(true);
             startActivity(new Intent(this, HomeScreen.class));
         }
-        Executor executor = ContextCompat.getMainExecutor(this);
-        BiometricPrompt biometricPrompt = new BiometricPrompt(LogIn.this, executor, new BiometricPrompt.AuthenticationCallback() {
+        executor = ContextCompat.getMainExecutor(this);
+        bioPrompt = new BiometricPrompt(LogIn.this, executor, new BiometricPrompt.AuthenticationCallback() {
             @Override
             public void onAuthenticationError(int errorCode, @NonNull CharSequence errString) {
                 super.onAuthenticationError(errorCode, errString);
@@ -109,7 +109,7 @@ public class LogIn extends AppCompatActivity {
                 .setTitle(getString(R.string.finger_title))
                 .setNegativeButtonText(getString(R.string.finger_cancel))
                 .build();
-        biometricPrompt.authenticate(info);
+        bioPrompt.authenticate(info);
         //An event is done when the Log In button is pressed.
         btnLogin.setOnClickListener(e -> {
                 if(txtUsername.getText().toString().equals("admin") && txtPassword.getText().toString().equals("admin")){
