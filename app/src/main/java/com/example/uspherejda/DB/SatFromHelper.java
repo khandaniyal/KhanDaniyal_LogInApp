@@ -11,8 +11,8 @@ import java.util.ArrayList;
 
 
 public class SatFromHelper extends SQLiteOpenHelper {
-    public static final int DATABASE_VERSION = 1;
-    public static final String DATABASE_NAME = "contacts.db";
+        public static final int DATABASE_VERSION = 1;
+        public static final String DATABASE_NAME = "contacts.db";
 
     //private static final String SQL_DROP_ENTRIES = "DELETE * TABLE " + SatFormContracts.ContactsEntry.TABLE_NAME + ";";
     private static final String SQL_CREATE_ENTRIES = "CREATE TABLE " + SatFormContracts.ContactsEntry.TABLE_NAME +
