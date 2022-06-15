@@ -81,7 +81,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/ic_logo_ftw" />
+        app:srcCompat="@drawable/ic_logo_ftw" />
 
     <ImageView
         android:id="@+id/imgTitle"
